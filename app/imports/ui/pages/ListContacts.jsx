@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader } from 'semantic-ui-react';
+import { Container, Header, Loader, Card } from 'semantic-ui-react';
 import { Stuffs } from '/imports/api/stuff/Stuff';
 import Contact from '/imports/ui/components/Contact';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListContact extends React.Component {
+class ListContacts extends React.Component {
   contacts = [{
     firstName: 'Philip', lastName: 'Johnson', address: 'POST 307, University of Hawaii',
     image: 'https://philipmjohnson.github.io/images/philip2.jpeg',
@@ -40,9 +40,9 @@ class ListContact extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center" inverted>List Stuff</Header>
+          <Header as="h2" textAlign="center" inverted>List Contacts</Header>
           <Card.Group>
-            {this.contacts.map((contact, index) => <Contact key={index} contact={contact}/>)}
+            {this.contacts.map((contact, index) => <Contact key ={index} contact={contact} />)}
           </Card.Group>
         </Container>
     );
@@ -50,7 +50,7 @@ class ListContact extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-ListContact.propTypes = {
+ListContacts.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -63,4 +63,4 @@ export default withTracker(() => {
     stuffs: Stuffs.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(ListContact);
+})(ListContacts);
