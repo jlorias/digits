@@ -45,7 +45,6 @@ class ListContacts extends React.Component {
             {this.contacts.map((contact, index) => <Contact key ={index} contact={contact} />)}
           </Card.Group>
         </Container>
-
     );
   }
 }
