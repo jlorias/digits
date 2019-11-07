@@ -36,7 +36,7 @@ $ meteor npm install
 
 ## Running the system
 
-Once the libraries are installed, you can run the application by invoking the "start" script in the [package.json file](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/package.json):
+Once the libraries are installed, you can run the application by invoking the "start" script in the [packageContacts.json file](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/package.json):
 
 ```
 $ meteor npm run start
@@ -48,7 +48,7 @@ The first time you run the app, it will create some default users and data. Here
 meteor npm run start
 
 > meteor-application-template-react@ start /Users/philipjohnson/github/ics-software-engineering/meteor-application-template-react/app
-> meteor --no-release-check --settings ../config/settings.development.json
+> meteor --no-release-check --settings ../config/settings.developmentContacts.json
 
 [[[[[ ~/github/ics-software-engineering/meteor-application-template-react/app ]]]]]
 
@@ -91,17 +91,17 @@ Intermittently, you may see the following error message in the console when the 
 
 ```
 MongoError: not master and slaveOk=false
-     at queryCallback (/Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/cursor.js:248:25)
-     at /Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/connection/pool.js:532:18
-     at _combinedTickCallback (internal/process/next_tick.js:131:7)
-     at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+     at queryCallback (/Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/cursorContacts.js:248:25)
+     at /Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/connection/poolContacts.js:532:18
+     at _combinedTickCallback (internal/process/next_tickContacts.js:131:7)
+     at process._tickDomainCallback (internal/process/next_tickContacts.js:218:9)
 ```
 
 While irritating, this message appears to be harmless and [possibly related to a race condition between the development instance of Mongo and Meteor](https://github.com/meteor/meteor/issues/9026#issuecomment-330850366). By harmless, I mean that in most cases, the console goes on to display `App running at: http://localhost:3000/` and no problems occur during run time.
 
 ### Viewing the running app
 
-If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json), or else register a new account.
+If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.developmentContacts.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json), or else register a new account.
 
 ### ESLint
 
@@ -121,9 +121,9 @@ The top-level directory structure is:
 
 ```
 app/        # holds the Meteor application sources
-config/     # holds configuration files, such as settings.development.json
+config/     # holds configuration files, such as settings.developmentContacts.json
 doc/        # holds developer documentation, user guides, etc.
-.gitignore  # don't commit IntelliJ project files, node_modules, and settings.production.json
+.gitignore  # don't commit IntelliJ project files, node_modules, and settings.productionContacts.json
 ```
 
 This structure separates documentation files (such as screenshots) and configuration files (such as the settings files) from the actual Meteor application.
@@ -133,7 +133,7 @@ The app/ directory has this structure:
 ```
 client/
   main.html      # The boilerplate HTML with a "root" div to be manipulated by React.
-  main.js        # import startup files.
+  mainContacts.js        # import startup files.
 
 imports/
   api/           # Define collections
@@ -151,12 +151,12 @@ node_modules/    # managed by npm
 public/          # static assets (like images) can go here.
 
 server/
-   main.js       # import the server-side js files.
+   mainContacts.js       # import the server-side js files.
 ```
 
 ### Import conventions
 
-This system adheres to the Meteor guideline of putting all application code in the imports/ directory, and using client/main.js and server/main.js to import the code appropriate for the client and server in an appropriate order.
+This system adheres to the Meteor guideline of putting all application code in the imports/ directory, and using client/mainContacts.js and server/mainContacts.js to import the code appropriate for the client and server in an appropriate order.
 
 ### Application functionality
 
@@ -215,7 +215,7 @@ After clicking on the "Edit" link associated with an item, this page displays th
 
 #### Landing (after Login), Admin user
 
-You can define an "admin" user in the settings.json file. This user, after logging in, gets a special entry in the navbar:
+You can define an "admin" user in the settingsContacts.json file. This user, after logging in, gets a special entry in the navbar:
 
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-landing-page.png)
 
@@ -231,9 +231,9 @@ Note that non-admin users cannot get to this page, even if they type in the URL 
 
 The application implements a single Collection called "Stuff". Each Stuff document has the following fields: name, quantity, condition, and username.
 
-The Stuff collection is defined in [imports/api/stuff/stuff.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/api/stuff/stuff.js).
+The Stuff collection is defined in [imports/api/stuff/stuffContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/api/stuff/stuff.js).
 
-The Stuff collection is initialized in [imports/startup/server/stuff.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/stuff.js).
+The Stuff collection is initialized in [imports/startup/server/stuffContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/stuff.js).
 
 ### CSS
 
@@ -243,14 +243,14 @@ The application uses the [React implementation of Semantic UI](http://react.sema
 
 For display and navigation among its four pages, the application uses [React Router](https://reacttraining.com/react-router/).
 
-Routing is defined in [imports/ui/layouts/App.jsx](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/ui/layouts/App.jsx).
+Routing is defined in [imports/ui/layouts/AppContacts.jsx](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/ui/layouts/App.jsx).
 
 
 ### Authentication
 
 For authentication, the application uses the Meteor accounts package.
 
-When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [imports/startup/server/accounts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/accounts.js).
+When the application is run for the first time, a settings file (such as [config/settings.developmentContacts.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [imports/startup/server/accountsContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/accounts.js).
 
 The application allows users to register and create new accounts at any time.
 
@@ -260,9 +260,9 @@ Only logged in users can manipulate Stuff documents (but any registered user can
 
 ### Configuration
 
-The [config](https://github.com/ics-software-engineering/meteor-application-template-react/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json).
+The [config](https://github.com/ics-software-engineering/meteor-application-template-react/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.developmentContacts.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json).
 
-The [.gitignore](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
+The [.gitignore](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/.gitignore) file prevents a file named settings.productionContacts.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.productionContacts.json and it will not be committed.
 
 ### Quality Assurance
 
