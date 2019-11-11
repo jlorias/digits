@@ -4,7 +4,7 @@ import { Container, Header, Loader, Card } from 'semantic-ui-react';
 import ContactAdmin from '../components/ContactAdmin';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Contacts } from '/imports/api/contact/Contacts';
+import { Contacts } from '/imports/api/contact/Notes';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListContactsAdmin extends React.Component {

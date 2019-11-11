@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import { Contacts, ContactSchema } from '/imports/api/contact/Contacts';
+import { Contacts, ContactSchema } from '/imports/api/contact/Notes';
 import swal from 'sweetalert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';

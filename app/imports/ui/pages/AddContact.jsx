@@ -1,5 +1,5 @@
 import React from 'react';
-import { Contacts } from '/imports/api/contact/Contacts';
+import { Contacts } from '/imports/api/contact/Notes';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
