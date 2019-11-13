@@ -1,42 +1,23 @@
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-page.png)
+![](doc/landing-page-digits.png)
 
-Meteor-application-template-react is a sample Meteor 1.8 application that illustrates:
-
-  * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
-  * [Semantic UI React](https://react.semantic-ui.com/) for user interface.
-  * [Uniforms](https://uniforms.tools/) for form development.
-  * [alanning:roles](https://github.com/alanning/meteor-roles) to implement a special "Admin" user.
-  * Authorization, authentication, and registration using built-in Meteor packages.
-  * Initialization of users and data from a settings file.
-  * Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
-  * Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
-
-The goal of this template is to help you get quickly started doing Meteor development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and collection manipulation.
-
-To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
-
-  * Testing.
-  * Security (meteor-application-template-react enables the insecure packages)
-
-Examples of the these capabilities will be provided elsewhere.
+Digits is a Meteor application that allows users to:
+  * Register an account.
+  * Create and manage a set of contacts.
+  * Add a set of timestamped notes regarding their interactions with each contact
 
 ## Installation
 
 First, [install Meteor](https://www.meteor.com/install).
 
-Second, go to [https://github.com/ics-software-engineering/meteor-application-template-react](https://github.com/ics-software-engineering/meteor-application-template-react), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
+Second, download a [copy of Digits](https://github.com/jlorias/digits). Note that Digits is a private repo and so you will need to request permission from the author to gain access to the repo.
 
-Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system.  Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
-
-Fourth, cd into the app/ directory of your local copy of the repo, and install third party libraries with:
+Third, cd into the app directory install the required libraries with:
 
 ```
 $ meteor npm install
 ```
 
-## Running the system
-
-Once the libraries are installed, you can run the application by invoking the "start" script in the [packageContacts.json file](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/package.json):
+Once the libraries are installed, you can run the application by invoking:
 
 ```
 $ meteor npm run start
@@ -113,180 +94,46 @@ meteor npm run lint
 
 ## Walkthrough
 
-The following sections describe the major features of this template.
+Landing Page
+When you first bring up the application, you will see the landing page that provides a brief introduction to the capabilities of Digits:
 
-### Directory structure
+![](doc/landing-page-digits.png)
 
-The top-level directory structure is:
 
-```
-app/        # holds the Meteor application sources
-config/     # holds configuration files, such as settings.developmentContacts.json
-doc/        # holds developer documentation, user guides, etc.
-.gitignore  # don't commit IntelliJ project files, node_modules, and settings.productionContacts.json
-```
+Register
+If you do not yet have an account on the system, you can register by clicking on “Login”, then “Sign Up”:
 
-This structure separates documentation files (such as screenshots) and configuration files (such as the settings files) from the actual Meteor application.
+![](doc/register-page.png)
 
-The app/ directory has this structure:
 
-```
-client/
-  main.html      # The boilerplate HTML with a "root" div to be manipulated by React.
-  mainContacts.js        # import startup files.
+Sign in
+Click on the Login link, then click on the Signin link to bring up the Sign In page which allows you to login:
 
-imports/
-  api/           # Define collections
-    stuff/       # The Stuff collection definition
-  startup/       # Define code to run when system starts up (client-only, server-only, both)
-    client/
-    server/
-  ui/
-    layouts/     # Contains top-level layout (<App> component).
-    pages/       # Contains components for each page.
-    components/  # Contains page elements, some of which could appear on multiple pages.
+![](doc/sign-in-page.png)
 
-node_modules/    # managed by npm
 
-public/          # static assets (like images) can go here.
+User home page
+After successfully logging in, the system takes you to your home page. It is just like the landing page, but the NavBar contains links to list contact and add new contacts:
 
-server/
-   mainContacts.js       # import the server-side js files.
-```
+![](doc/landing-page-signed-in.png)
 
-### Import conventions
 
-This system adheres to the Meteor guideline of putting all application code in the imports/ directory, and using client/mainContacts.js and server/mainContacts.js to import the code appropriate for the client and server in an appropriate order.
+List Contacts
+Clicking on the List Contacts link brings up a page that lists all of the contacts associated with the logged in user:
 
-### Application functionality
+![](doc/list-contacts-page.png)
 
-The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String), a quantity (Number), and a condition (one of 'excellent', 'good', 'fair', or 'poor').
+This page also allows the user to add timestamped “notes” detailing interactions they’ve had with the Contact. For example:
 
-By default, each user only sees the Stuff that they have created.  However, the settings file enables you to define default accounts.  If you define a user with the role "admin", then that user gets access to a special page which lists all the Stuff defined by all users.
+![](doc/list-contacts-notes-page.png)
 
-#### Landing page
+Edit Contacts
+From the List Contacts page, the user can click the “Edit” link associated with any Contact to bring up a page that allows that Contact information to be edited:
 
-When you retrieve the app at http://localhost:3000, this is what should be displayed:
+![](doc/edit-contact-page.png)
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-page.png)
 
-The next step is to use the Login menu to either Login to an existing account or register a new account.
+Admin mode
+It is possible to designate one or more users as “Admins” through the settings file. When a user has the Admin role, they get access to a special NavBar link that retrieves a page listing all Contacts associated with all users:
 
-#### Login page
-
-Clicking on the Login link, then on the Sign In menu item displays this page:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/signin-page.png)
-
-#### Register page
-
-Alternatively, clicking on the Login link, then on the Sign Up menu item displays this page:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/register-page.png)
-
-
-#### Landing (after Login) page, non-Admin user
-
-Once you log in (either to an existing account or by creating a new one), the navbar changes as follows:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-after-login-page.png)
-
-You can now add new Stuff documents, and list the Stuff you have created. Note you cannot see any Stuff created by other users.
-
-#### Add Stuff page
-
-After logging in, here is the page that allows you to add new Stuff:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/add-stuff-page.png)
-
-#### List Stuff page
-
-After logging in, here is the page that allows you to list all the Stuff you have created:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/list-stuff-page.png)
-
-You click the "Edit" link to go to the Edit Stuff page, shown next.
-
-#### Edit Stuff page
-
-After clicking on the "Edit" link associated with an item, this page displays that allows you to change and save it:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/edit-stuff-page.png)
-
-#### Landing (after Login), Admin user
-
-You can define an "admin" user in the settingsContacts.json file. This user, after logging in, gets a special entry in the navbar:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-landing-page.png)
-
-#### Admin page (list all users stuff)
-
-To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Stuff by all of the users:
-
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/admin-list-stuff-page.png)
-
-Note that non-admin users cannot get to this page, even if they type in the URL by hand.
-
-### Collections
-
-The application implements a single Collection called "Stuff". Each Stuff document has the following fields: name, quantity, condition, and username.
-
-The Stuff collection is defined in [imports/api/stuff/stuffContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/api/stuff/stuff.js).
-
-The Stuff collection is initialized in [imports/startup/server/stuffContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/stuff.js).
-
-### CSS
-
-The application uses the [React implementation of Semantic UI](http://react.semantic-ui.com/).
-
-### Routing
-
-For display and navigation among its four pages, the application uses [React Router](https://reacttraining.com/react-router/).
-
-Routing is defined in [imports/ui/layouts/AppContacts.jsx](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/ui/layouts/App.jsx).
-
-
-### Authentication
-
-For authentication, the application uses the Meteor accounts package.
-
-When the application is run for the first time, a settings file (such as [config/settings.developmentContacts.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [imports/startup/server/accountsContacts.js](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/imports/startup/server/accounts.js).
-
-The application allows users to register and create new accounts at any time.
-
-### Authorization
-
-Only logged in users can manipulate Stuff documents (but any registered user can manipulate any Stuff document, even if they weren't the user that created it.)
-
-### Configuration
-
-The [config](https://github.com/ics-software-engineering/meteor-application-template-react/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.developmentContacts.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json).
-
-The [.gitignore](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/.gitignore) file prevents a file named settings.productionContacts.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.productionContacts.json and it will not be committed.
-
-### Quality Assurance
-
-#### ESLint
-
-The application includes a [.eslintrc](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/app/.eslintrc) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
-
-```
-[~/meteor-application-template-react/app]-> meteor npm run lint
-
-> meteor-application-template-react@ lint /Users/philipjohnson/meteor-application-template-react/app
-> eslint --quiet ./imports
-```
-
-ESLint should run without generating any errors.
-
-It's significantly easier to do development with ESLint integrated directly into your IDE (such as IntelliJ).
-
-## Screencasts
-
-For more information about this system, please watch one or more of the following screencasts. Note that the current source code might differ slightly from the code in these screencasts, but the changes should be very minor.
-
-  * [Walkthrough of system user interface (5 min)](https://www.youtube.com/watch?v=shYgqco1AUs)
-  * [Data and accounts structure and initialization (15 min)](https://www.youtube.com/watch?v=p9dvM6MdCGs)
-  * [Navigation, routing, pages, components (23 min)](https://www.youtube.com/watch?v=DAv0UjS0VjQ)
-  * [Forms (25 min)](https://www.youtube.com/watch?v=z02076QgDA8)
-  * [Authorization, authentication, and roles (10 min)](https://www.youtube.com/watch?v=_i1dgcP0zoI)
+![](doc/admin-page.png)
